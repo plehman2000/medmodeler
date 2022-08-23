@@ -1,0 +1,36 @@
+2022-08-18 11:30:29,398 INFO    MainThread:6740 [wandb_setup.py:_flush():76] Configure stats pid to 6740
+2022-08-18 11:30:29,398 INFO    MainThread:6740 [wandb_setup.py:_flush():76] Loading settings from C:\Users\Patrick\.config\wandb\settings
+2022-08-18 11:30:29,398 INFO    MainThread:6740 [wandb_setup.py:_flush():76] Loading settings from e:\Projects\Lab\MRI\wandb\settings
+2022-08-18 11:30:29,398 INFO    MainThread:6740 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'_require_service': 'True'}
+2022-08-18 11:30:29,399 INFO    MainThread:6740 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2022-08-18 11:30:29,399 INFO    MainThread:6740 [wandb_init.py:_log_setup():461] Logging user logs to e:\Projects\Lab\MRI\wandb\run-20220818_113029-33x1irlj\logs\debug.log
+2022-08-18 11:30:29,403 INFO    MainThread:6740 [wandb_init.py:_log_setup():462] Logging internal logs to e:\Projects\Lab\MRI\wandb\run-20220818_113029-33x1irlj\logs\debug-internal.log
+2022-08-18 11:30:29,403 INFO    MainThread:6740 [wandb_init.py:_jupyter_setup():411] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x000002B0126EDA00>
+2022-08-18 11:30:29,403 INFO    MainThread:6740 [wandb_init.py:init():495] calling init triggers
+2022-08-18 11:30:29,403 INFO    MainThread:6740 [wandb_init.py:init():498] wandb.init called with sweep_config: {}
+config: {}
+2022-08-18 11:30:29,403 INFO    MainThread:6740 [wandb_init.py:init():548] starting backend
+2022-08-18 11:30:29,404 INFO    MainThread:6740 [wandb_init.py:init():552] setting up manager
+2022-08-18 11:30:29,407 INFO    MainThread:6740 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=spawn, using: spawn
+2022-08-18 11:30:29,411 INFO    MainThread:6740 [wandb_init.py:init():558] backend started and connected
+2022-08-18 11:30:29,486 INFO    MainThread:6740 [wandb_run.py:_label_probe_notebook():1105] probe notebook
+2022-08-18 11:30:29,488 INFO    MainThread:6740 [wandb_run.py:_label_probe_notebook():1115] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2022-08-18 11:30:29,488 INFO    MainThread:6740 [wandb_init.py:init():636] updated telemetry
+2022-08-18 11:30:29,756 INFO    MainThread:6740 [wandb_init.py:init():667] communicating run to backend with 30 second timeout
+2022-08-18 11:30:30,970 INFO    MainThread:6740 [wandb_run.py:_on_init():1982] communicating current version
+2022-08-18 11:30:31,670 INFO    MainThread:6740 [wandb_run.py:_on_init():1986] got version response 
+2022-08-18 11:30:31,670 INFO    MainThread:6740 [wandb_init.py:init():700] starting run threads in backend
+2022-08-18 11:30:36,704 INFO    MainThread:6740 [wandb_run.py:_console_start():1962] atexit reg
+2022-08-18 11:30:36,704 INFO    MainThread:6740 [wandb_run.py:_redirect():1820] redirect: SettingsConsole.WRAP_RAW
+2022-08-18 11:30:36,704 INFO    MainThread:6740 [wandb_run.py:_redirect():1885] Wrapping output streams.
+2022-08-18 11:30:36,704 INFO    MainThread:6740 [wandb_run.py:_redirect():1907] Redirects installed.
+2022-08-18 11:30:36,705 INFO    MainThread:6740 [wandb_init.py:init():732] run started, returning control to user process
+2022-08-18 11:30:36,705 INFO    MainThread:6740 [wandb_init.py:_pause_backend():374] pausing backend
+2022-08-18 11:30:36,705 INFO    MainThread:6740 [jupyter.py:save_ipynb():377] not saving jupyter notebook
+2022-08-18 11:30:36,845 INFO    MainThread:6740 [wandb_init.py:_resume_backend():383] resuming backend
+2022-08-18 11:30:36,849 INFO    MainThread:6740 [wandb_init.py:_pause_backend():374] pausing backend
+2022-08-18 11:30:36,849 INFO    MainThread:6740 [jupyter.py:save_ipynb():377] not saving jupyter notebook
+2022-08-18 11:30:36,914 INFO    MainThread:6740 [wandb_init.py:_resume_backend():383] resuming backend
+2022-08-18 11:30:37,548 INFO    MainThread:6740 [wandb_init.py:_pause_backend():374] pausing backend
+2022-08-18 11:30:37,548 INFO    MainThread:6740 [jupyter.py:save_ipynb():377] not saving jupyter notebook
+2022-08-18 11:30:37,644 INFO    MainThread:6740 [wandb_init.py:_resume_backend():383] resuming backend

@@ -1,0 +1,11 @@
+
+100%|██████████| 5/5 [00:00<00:00,  9.04it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.96it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Missing logger folder: e:\Projects\Lab\MRI\lightning_logs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:472: PossibleUserWarning: Your `predict_dataloader`'s sampler has shuffling enabled, it is strongly recommended that you turn shuffling off for val/test/predict dataloaders.
+  rank_zero_warn(
+

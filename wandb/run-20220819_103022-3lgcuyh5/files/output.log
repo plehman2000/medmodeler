@@ -1,0 +1,343 @@
+100%|██████████| 5/5 [00:00<00:00,  9.86it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Running in `fast_dev_run` mode: will run the requested loop using 1 batch(es). Logging and checkpointing is suppressed.
+Epoch 0:   0%|          | 0/2 [00:00<?, ?it/s]
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (1) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+Epoch 0:   0%|          | 0/2 [00:00<?, ?it/s] tensor([[[[[-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           ...,
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748]],
+          [[-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           ...,
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748]],
+          [[-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           ...,
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748]],
+          ...,
+          [[-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           ...,
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748]],
+          [[-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           ...,
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748]],
+          [[-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           ...,
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748],
+           [-83.1748, -83.1748, -83.1748,  ..., -83.1748, -83.1748,
+            -83.1748]]]]])
+GPU available: False, used: False,  9.73it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Running in `fast_dev_run` mode: will run the requested loop using 1 batch(es). Logging and checkpointing is suppressed.
+Collecting opencv-python
+  Downloading opencv_python-4.6.0.66-cp36-abi3-win_amd64.whl (35.6 MB)
+Requirement already satisfied: numpy>=1.19.3 in e:\applications\anaconda\envs\swamphacks\lib\site-packages (from opencv-python) (1.22.1)
+Installing collected packages: opencv-python
+Successfully installed opencv-python-4.6.0.66
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: numpy in e:\applications\anaconda\envs\swamphacks\lib\site-packages (1.22.1)
+Note: you may need to restart the kernel to use updated packages.
+<class 'torch.Tensor'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+(240, 192)
+Epoch 0:   0%|          | 0/2 [38:24<?, ?it/s]
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 1, 48, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+torch.Size([1, 240, 192])
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+100%|██████████| 5/5 [00:00<00:00,  9.88it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Running in `fast_dev_run` mode: will run the requested loop using 1 batch(es). Logging and checkpointing is suppressed.
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+100%|██████████| 5/5 [00:00<00:00,  9.84it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Running in `fast_dev_run` mode: will run the requested loop using 1 batch(es). Logging and checkpointing is suppressed.
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+(4, 1)
+Training set: 4 subjects
+Validation set: 1 subjects
+100%|██████████| 5/5 [00:00<00:00,  9.90it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs

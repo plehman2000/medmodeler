@@ -1,0 +1,310 @@
+
+100%|██████████| 5/5 [00:00<00:00,  8.85it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.96it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\configuration_validator.py:117: PossibleUserWarning: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+  rank_zero_warn(
+100%|██████████| 5/5 [00:00<00:00,  9.07it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\configuration_validator.py:117: PossibleUserWarning: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+  rank_zero_warn(
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+Epoch 0:   0%|          | 0/4 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.91it/s]
+GPU available: False, used: False,  8.83it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+100%|██████████| 5/5 [00:00<00:00,  9.09it/s]
+GPU available: False, used: False,  9.10it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\configuration_validator.py:117: PossibleUserWarning: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+  rank_zero_warn(
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+100%|██████████| 5/5 [00:00<00:00,  9.14it/s]
+GPU available: False, used: False,  9.09it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+100%|██████████| 5/5 [00:00<00:00,  8.91it/s]
+GPU available: False, used: False,  9.05it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\configuration_validator.py:117: PossibleUserWarning: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+  rank_zero_warn(
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+GPU available: False, used: False,  9.16it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\configuration_validator.py:117: PossibleUserWarning: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+  rank_zero_warn(
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+Epoch 0:   0%|          | 0/4 [01:06<?, ?it/s]
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+Epoch 0:   0%|          | 0/4 [4:36:45<?, ?it/s]/1 [00:00<?, ?it/s]
+Epoch 0:   0%|          | 0/4 [4:34:33<?, ?it/s]
+Epoch 0:   0%|          | 0/4 [4:30:30<?, ?it/s]
+Epoch 0:   0%|          | 0/4 [4:28:38<?, ?it/s]
+Epoch 0:   0%|          | 0/4 [4:16:47<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.91it/s]
+GPU available: False, used: False,  8.98it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00,  9.11it/s]
+GPU available: False, used: False,  9.06it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\unet\decoding.py:146: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  half_crop = crop // 2
+100%|██████████| 5/5 [00:00<00:00,  9.06it/s]
+GPU available: False, used: False,  9.01it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\utilities\data.py:98: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 1. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.99it/s]
+GPU available: False, used: False,  9.00it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+GPU available: False, used: False,  9.13it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\unet\decoding.py:146: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+100%|██████████| 5/5 [00:00<00:00,  9.01it/s]
+GPU available: False, used: False,  9.02it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+
+Sanity Checking: 0it [00:00, ?it/s]0<?, ?it/s]
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\unet\decoding.py:146: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+100%|██████████| 5/5 [00:00<00:00,  8.91it/s]
+GPU available: False, used: False,  8.97it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+
+Sanity Checking: 0it [00:00, ?it/s]0<?, ?it/s]
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+
+GPU available: False, used: False,  8.94it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\unet\decoding.py:146: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  half_crop = crop // 2
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.94it/s]
+GPU available: False, used: False,  8.97it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+
+Sanity Checking DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\unet\decoding.py:146: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+
+GPU available: False, used: False,  9.09it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+
+
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00,  8.96it/s]
+GPU available: False, used: False,  9.03it/s]
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+
+Epoch 0:   0%|          | 0/2 [00:00<?, ?it/s]
+  | Name  | Type | Params
+-------------------------------
+0 | model | UNet | 246 K
+-------------------------------
+246 K     Trainable params
+0         Non-trainable params
+246 K     Total params
+0.985     Total estimated model params size (MB)
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\trainer.py:1894: PossibleUserWarning: The number of training batches (1) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.

@@ -1,0 +1,9 @@
+100%|██████████| 5/5 [00:00<00:00,  9.02it/s]
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\loops\utilities.py:89: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+e:\Applications\Anaconda\envs\swamphacks\lib\site-packages\pytorch_lightning\trainer\configuration_validator.py:117: PossibleUserWarning: You defined a `validation_step` but have no `val_dataloader`. Skipping val loop.
+  rank_zero_warn(
