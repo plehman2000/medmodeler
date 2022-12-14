@@ -1,256 +1,132 @@
-from torch import nn, einsum
+
+ 
+import os
 import torch
-from einops.layers.torch import Rearrange
-from einops import rearrange, repeat
+import matplotlib.pyplot as plt
+import pytorch_lightning as pl
+import segmentation_models_pytorch as smp
+
+from pprint import pprint
+from torch.utils.data import DataLoader
 
 
-class PreNorm(nn.Module):
-    def __init__(self, dim, fn):
+# ## Model
+class MRISEG(pl.LightningModule):
+
+    def __init__(self, arch, encoder_name, in_channels, out_classes,  **kwargs):
         super().__init__()
-        self.norm = nn.LayerNorm(dim)
-        self.fn = fn
-
-    def forward(self, x, **kwargs):
-        return self.fn(self.norm(x), **kwargs)
-
-
-class FSAttention(nn.Module):
-    """Factorized Self-Attention"""
-
-    def __init__(self, dim, heads=8, dim_head=64, dropout=0.):
-        super().__init__()
-        inner_dim = dim_head * heads
-        project_out = not (heads == 1 and dim_head == dim)
-
-        self.heads = heads
-        self.scale = dim_head ** -0.5
-
-        self.attend = nn.Softmax(dim=-1)
-        self.to_qkv = nn.Linear(dim, inner_dim * 3, bias=False)
-
-        self.to_out = nn.Sequential(
-            nn.Linear(inner_dim, dim),
-            nn.Dropout(dropout)
-        ) if project_out else nn.Identity()
-
-    def forward(self, x):
-        b, n, _, h = *x.shape, self.heads
-        qkv = self.to_qkv(x).chunk(3, dim=-1)
-        q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h=h), qkv)
-
-        dots = einsum('b h i d, b h j d -> b h i j', q, k) * self.scale
-
-        attn = self.attend(dots)
-
-        out = einsum('b h i j, b h j d -> b h i d', attn, v)
-        out = rearrange(out, 'b h n d -> b n (h d)')
-        return self.to_out(out)
-
-
-class FDAttention(nn.Module):
-    """Factorized Dot-product Attention"""
-
-    def __init__(self, dim, nt, nh, nw, heads=8, dim_head=64, dropout=0.):
-        super().__init__()
-        inner_dim = dim_head * heads
-        project_out = not (heads == 1 and dim_head == dim)
-
-        self.nt = nt
-        self.nh = nh
-        self.nw = nw
-
-        self.heads = heads
-        self.scale = dim_head ** -0.5
-
-        self.attend = nn.Softmax(dim=-1)
-        self.to_qkv = nn.Linear(dim, inner_dim * 3, bias=False)
-
-        self.to_out = nn.Sequential(
-            nn.Linear(inner_dim, dim),
-            nn.Dropout(dropout)
-        ) if project_out else nn.Identity()
-
-    def forward(self, x):
-        b, n, d, h = *x.shape, self.heads
-
-        qkv = self.to_qkv(x).chunk(3, dim=-1)
-        q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h=h), qkv)
-        qs, qt = q.chunk(2, dim=1)
-        ks, kt = k.chunk(2, dim=1)
-        vs, vt = v.chunk(2, dim=1)
-
-        # Attention over spatial dimension
-        qs = qs.view(b, h // 2, self.nt, self.nh * self.nw, -1)
-        ks, vs = ks.view(b, h // 2, self.nt, self.nh * self.nw, -1), vs.view(b, h // 2, self.nt, self.nh * self.nw, -1)
-        spatial_dots = einsum('b h t i d, b h t j d -> b h t i j', qs, ks) * self.scale
-        sp_attn = self.attend(spatial_dots)
-        spatial_out = einsum('b h t i j, b h t j d -> b h t i d', sp_attn, vs)
-
-        # Attention over temporal dimension
-        qt = qt.view(b, h // 2, self.nh * self.nw, self.nt, -1)
-        kt, vt = kt.view(b, h // 2, self.nh * self.nw, self.nt, -1), vt.view(b, h // 2, self.nh * self.nw, self.nt, -1)
-        temporal_dots = einsum('b h s i d, b h s j d -> b h s i j', qt, kt) * self.scale
-        temporal_attn = self.attend(temporal_dots)
-        temporal_out = einsum('b h s i j, b h s j d -> b h s i d', temporal_attn, vt)
-
-        # return self.to_out(out)
-
-
-class FeedForward(nn.Module):
-    def __init__(self, dim, hidden_dim, dropout=0.):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(dim, hidden_dim),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(hidden_dim, dim),
-            nn.Dropout(dropout)
+        self.save_hyperparameters()
+        self.model = smp.create_model(
+            arch, encoder_name=encoder_name, in_channels=in_channels, classes=out_classes, **kwargs
         )
+        # preprocessing parameteres for image
+        params = smp.encoders.get_preprocessing_params(encoder_name)
+        self.register_buffer("std", torch.tensor(params["std"]).view(1, 3, 1, 1))
+        self.register_buffer("mean", torch.tensor(params["mean"]).view(1, 3, 1, 1))
 
-    def forward(self, x):
-        return self.net(x)
+        # for image segmentation dice loss could be the best first choice
+        self.loss_fn = smp.losses.DiceLoss(smp.losses.BINARY_MODE, from_logits=True)
 
+    def forward(self, image):
+        # normalize image here
+        image = (image - self.mean) / self.std
+        mask = self.model(image)
+        return mask
 
-class FSATransformerEncoder(nn.Module):
-    """Factorized Self-Attention Transformer Encoder"""
+    def shared_step(self, batch, stage):
+        
+        image = batch["image"]
 
-    def __init__(self, dim, depth, heads, dim_head, mlp_dim, nt, nh, nw, dropout=0.):
-        super().__init__()
-        self.layers = nn.ModuleList([])
-        self.nt = nt
-        self.nh = nh
-        self.nw = nw
+        # Shape of the image should be (batch_size, num_channels, height, width)
+        # if you work with grayscale images, expand channels dim to have [batch_size, 1, height, width]
+        assert image.ndim == 4
 
-        for _ in range(depth):
-            self.layers.append(nn.ModuleList(
-                [PreNorm(dim, FSAttention(dim, heads=heads, dim_head=dim_head, dropout=dropout)),
-                 PreNorm(dim, FSAttention(dim, heads=heads, dim_head=dim_head, dropout=dropout)),
-                 PreNorm(dim, FeedForward(dim, mlp_dim, dropout=dropout))
-                 ]))
+        # Check that image dimensions are divisible by 32, 
+        # encoder and decoder connected by `skip connections` and usually encoder have 5 stages of 
+        # downsampling by factor 2 (2 ^ 5 = 32); e.g. if we have image with shape 65x65 we will have 
+        # following shapes of features in encoder and decoder: 84, 42, 21, 10, 5 -> 5, 10, 20, 40, 80
+        # and we will get an error trying to concat these features
+        h, w = image.shape[2:]
+        assert h % 32 == 0 and w % 32 == 0
 
-    def forward(self, x):
+        mask = batch["mask"]
 
-        b = x.shape[0]
-        x = torch.flatten(x, start_dim=0, end_dim=1)  # extract spatial tokens from x
+        # Shape of the mask should be [batch_size, num_classes, height, width]
+        # for binary segmentation num_classes = 1
+        assert mask.ndim == 4
 
-        for sp_attn, temp_attn, ff in self.layers:
-            sp_attn_x = sp_attn(x) + x  # Spatial attention
+        # Check that mask values in between 0 and 1, NOT 0 and 255 for binary segmentation
+        assert mask.max() <= 1.0 and mask.min() >= 0
 
-            # Reshape tensors for temporal attention
-            sp_attn_x = sp_attn_x.chunk(b, dim=0)
-            sp_attn_x = [temp[None] for temp in sp_attn_x]
-            sp_attn_x = torch.cat(sp_attn_x, dim=0).transpose(1, 2)
-            sp_attn_x = torch.flatten(sp_attn_x, start_dim=0, end_dim=1)
+        logits_mask = self.forward(image)
+        
+        # Predicted mask contains logits, and loss_fn param `from_logits` is set to True
+        loss = self.loss_fn(logits_mask, mask)
+        
+        # Lets compute metrics for some threshold
+        # first convert mask values to probabilities, then 
+        # apply thresholding
+        prob_mask = logits_mask.sigmoid()
+        pred_mask = (prob_mask > 0.5).float()
 
-            temp_attn_x = temp_attn(sp_attn_x) + sp_attn_x  # Temporal attention
+        # We will compute IoU metric by two ways
+        #   1. dataset-wise
+        #   2. image-wise
+        # but for now we just compute true positive, false positive, false negative and
+        # true negative 'pixels' for each image and class
+        # these values will be aggregated in the end of an epoch
+        tp, fp, fn, tn = smp.metrics.get_stats(pred_mask.long(), mask.long(), mode="binary")
 
-            x = ff(temp_attn_x) + temp_attn_x  # MLP
+        return {
+            "loss": loss,
+            "tp": tp,
+            "fp": fp,
+            "fn": fn,
+            "tn": tn,
+        }
 
-            # Again reshape tensor for spatial attention
-            x = x.chunk(b, dim=0)
-            x = [temp[None] for temp in x]
-            x = torch.cat(x, dim=0).transpose(1, 2)
-            x = torch.flatten(x, start_dim=0, end_dim=1)
+    def shared_epoch_end(self, outputs, stage):
+        # aggregate step metics
+        tp = torch.cat([x["tp"] for x in outputs])
+        fp = torch.cat([x["fp"] for x in outputs])
+        fn = torch.cat([x["fn"] for x in outputs])
+        tn = torch.cat([x["tn"] for x in outputs])
 
-        # Reshape vector to [b, nt*nh*nw, dim]
-        x = x.chunk(b, dim=0)
-        x = [temp[None] for temp in x]
-        x = torch.cat(x, dim=0)
-        x = torch.flatten(x, start_dim=1, end_dim=2)
-        return x
+        # per image IoU means that we first calculate IoU score for each image 
+        # and then compute mean over these scores
+        per_image_iou = smp.metrics.iou_score(tp, fp, fn, tn, reduction="micro-imagewise")
+        
+        # dataset IoU means that we aggregate intersection and union over whole dataset
+        # and then compute IoU score. The difference between dataset_iou and per_image_iou scores
+        # in this particular case will not be much, however for dataset 
+        # with "empty" images (images without target class) a large gap could be observed. 
+        # Empty images influence a lot on per_image_iou and much less on dataset_iou.
+        dataset_iou = smp.metrics.iou_score(tp, fp, fn, tn, reduction="micro")
 
+        metrics = {
+            f"{stage}_per_image_iou": per_image_iou,
+            f"{stage}_dataset_iou": dataset_iou,
+        }
+        
+        self.log_dict(metrics, prog_bar=True)
 
-class FDATransformerEncoder(nn.Module):
-    """Factorized Dot-product Attention Transformer Encoder"""
+    def training_step(self, batch, batch_idx):
+        return self.shared_step(batch, "train")            
 
-    def __init__(self, dim, depth, heads, dim_head, mlp_dim, nt, nh, nw, dropout=0.):
-        super().__init__()
-        self.layers = nn.ModuleList([])
-        self.nt = nt
-        self.nh = nh
-        self.nw = nw
+    def training_epoch_end(self, outputs):
+        return self.shared_epoch_end(outputs, "train")
 
-        for _ in range(depth):
-            self.layers.append(
-                PreNorm(dim, FDAttention(dim, nt, nh, nw, heads=heads, dim_head=dim_head, dropout=dropout)))
+    def validation_step(self, batch, batch_idx):
+        return self.shared_step(batch, "valid")
 
-    def forward(self, x):
-        for attn in self.layers:
-            x = attn(x) + x
+    def validation_epoch_end(self, outputs):
+        return self.shared_epoch_end(outputs, "valid")
 
-        return x
+    def test_step(self, batch, batch_idx):
+        return self.shared_step(batch, "test")  
 
+    def test_epoch_end(self, outputs):
+        return self.shared_epoch_end(outputs, "test")
 
-class ViViTBackbone(nn.Module):
-    """ Model-3 backbone of ViViT """
-
-    def __init__(self, t, h, w, patch_t, patch_h, patch_w, num_classes, dim, depth, heads, mlp_dim, dim_head=3,
-                 channels=3, mode='tubelet', device='cuda', emb_dropout=0., dropout=0., model=3):
-        super().__init__()
-
-        assert t % patch_t == 0 and h % patch_h == 0 and w % patch_w == 0, "Video dimensions should be divisible by " \
-                                                                           "tubelet size "
-
-        self.T = t
-        self.H = h
-        self.W = w
-        self.channels = channels
-        self.t = patch_t
-        self.h = patch_h
-        self.w = patch_w
-        self.mode = mode
-        self.device = device
-
-        self.nt = self.T // self.t
-        self.nh = self.H // self.h
-        self.nw = self.W // self.w
-
-        tubelet_dim = self.t * self.h * self.w * channels
-
-        self.to_tubelet_embedding = nn.Sequential(
-            Rearrange('b c (t pt) (h ph) (w pw) -> b t (h w) (pt ph pw c)', pt=self.t, ph=self.h, pw=self.w),
-            nn.Linear(tubelet_dim, dim)
-        )
-
-        # repeat same spatial position encoding temporally
-        self.pos_embedding = nn.Parameter(torch.randn(1, 1, self.nh * self.nw, dim)).repeat(1, self.nt, 1, 1)
-
-        self.dropout = nn.Dropout(emb_dropout)
-
-        if model == 3:
-            self.transformer = FSATransformerEncoder(dim, depth, heads, dim_head, mlp_dim,
-                                                     self.nt, self.nh, self.nw, dropout)
-        elif model == 4:
-            assert heads % 2 == 0, "Number of heads should be even"
-            self.transformer = FDATransformerEncoder(dim, depth, heads, dim_head, mlp_dim,
-                                                     self.nt, self.nh, self.nw, dropout)
-
-        self.to_latent = nn.Identity()
-
-        self.mlp_head = nn.Sequential(
-            nn.LayerNorm(dim),
-            nn.Linear(dim, num_classes)
-        )
-
-    def forward(self, x):
-        """ x is a video: (b, C, T, H, W) """
-
-        tokens = self.to_tubelet_embedding(x)
-
-        tokens += self.pos_embedding
-        tokens = self.dropout(tokens)
-
-        x = self.transformer(tokens)
-        x = x.mean(dim=1)
-
-        x = self.to_latent(x)
-        return self.mlp_head(x)
-
-
-if __name__ == '__main__':
-    device = torch.device('cpu')
-    x = torch.rand(32, 3, 32, 64, 64).to(device)
-
-    vivit = ViViTBackbone(32, 64, 64, 8, 4, 4, 10, 512, 6, 10, 8, model=3).to(device)
-    out = vivit(x)
-    print(out)
+    def configure_optimizers(self, learning_rate=0.0001):
+        return torch.optim.Adam(self.parameters(), lr=learning_rate)
