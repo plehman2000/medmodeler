@@ -1,7 +1,7 @@
 # medmodeler
 ![alt text](https://github.com/plehman2000/MRI/blob/main/assets/MM_logo.png?raw=true)
 
-This is the code for **medmodeler**, an end to end automatic segmentation tool for MRI files, and can identify lungs, bladder, liver, kidney and bone.
+This is the code for **medmodeler**, an end to end automatic segmentation tool for MRI files. This model identifies various tissues like lung, bladder, liver, kidney and bone, and then produces a medical image file for ease of visualization using *torchio*.
  
  ### Usage
 For use in your own project, simply download the project, install its dependencies and import "inference()" from inference.py file
